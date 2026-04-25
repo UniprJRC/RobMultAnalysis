@@ -12,8 +12,8 @@ prin=false;
 [XcompleteCases,idxRemovedCows]=rmmissing(X2);
 
 %% EM TEM application: input data for index plot of MD 
-% if alpha = 0, no trimming, creates Figure 4 and if alpha = 0.5 Figure 5
-% is created
+% alpha = 0, (no trimming) creates Figure 4 and alpha = 0.5 creates Figure 5
+
 alpha=0.5;
 
 if alpha==0
@@ -125,8 +125,6 @@ disp(AlphaNout)
 %% Creation of Figure with 4 panels which compares  original distances for 
 % complete rows before and after EM (Figure 7)
 
-% To replicate Figure 9, the parameter 'nsimul' of the function
-% mdMCARtest() should be set to 10000.
 figure
 rng(11)
 p = 7;                % number of variables
@@ -180,6 +178,9 @@ if prin == true
 end
 
 %% Call function which implements the test
+% To replicate exactly Figure 9, the parameter 'nsimul' of the function
+% mdMCARtest() should be set to 10000.
+
 out = mdMCARtest(X2, 'alpha', 0.5,'method', 'pri', ...
     'nsimul', 199, 'plots', true);
 disp(out.pvalue)
